@@ -1,8 +1,10 @@
 import 'react-native-gesture-handler';
-import React, { useState } from 'react';
+import React from 'react';
 import Home from '../screens/home';
 import ReviewDetails from '../screens/reviewDetails';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Header from '../shared/header';
+import { Button } from 'react-native';
 
 const homeStack = createNativeStackNavigator();
 
@@ -23,9 +25,9 @@ export default function HomeStack () {
           <homeStack.Screen
             name="Home"
             component={Home}
-            options={{
-              title: 'Game Zone',
-            }}
+            options={({ navigation, route }) => ({
+                headerTitle: () => <Header navigation={navigation} title='Game Zone'/>,
+              })}
           />
           <homeStack.Screen 
             name="Review Details" 
