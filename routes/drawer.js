@@ -7,11 +7,23 @@ import AboutStack from './aboutStack';
 
 const Drawer = createDrawerNavigator();
 
-export default function RootDrawer() { // Move this out later
+export default function RootDrawer() { 
     return (
-      <Drawer.Navigator>
-        <Drawer.Screen name="HomeStack" component={HomeStack} />
-        <Drawer.Screen name="AboutStack" component={AboutStack} />
+      <Drawer.Navigator screenOptions={{ headerShown: false }}>
+        <Drawer.Screen 
+            name="HomeStack" 
+            component={HomeStack} 
+            options={{
+                title: 'Home',
+              }}
+        />
+        <Drawer.Screen 
+            name="AboutStack" 
+            component={AboutStack} 
+            options={{
+                title: 'About',
+              }}    
+        />
       </Drawer.Navigator>
     );
   }
