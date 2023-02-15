@@ -11,12 +11,8 @@ export default function AboutStack () {
       <aboutStack.Navigator
         screenOptions = {{
           headerStyle: {
-            backgroundColor: '#0F8128',
+            backgroundColor: '#366480',
             height: 60,
-          },
-          headerTintColor: '#fff',
-          headerTitleStyle: {
-            fontWeight: 'bold',
           },
         }}
       >

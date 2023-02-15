@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image } from 'react-native';
+import { StyleSheet, View, Text, Image, ImageBackground } from 'react-native';
 import {globalStyles, images} from '../styles/global';
 import Card from '../shared/card';
 
@@ -9,7 +9,7 @@ export default function ReviewDetails ({ route, navigation }) {
     const {title, rating, body, key} = route.params;
 
     return (
-        <View style={globalStyles.container}>
+        <ImageBackground source={require('../assets/game_bg.png')} style={globalStyles.container}>
             <Card>
                 <Text>Title: {JSON.stringify(title)}</Text>
                 <Text>Review: {JSON.stringify(body)}</Text>
@@ -18,7 +18,7 @@ export default function ReviewDetails ({ route, navigation }) {
                     <Image source={images.ratings[rating]} />
                 </View>
             </Card>
-        </View>
+        </ImageBackground>
     )
 }
 

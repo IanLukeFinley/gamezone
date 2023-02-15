@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, FlatList, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, FlatList, TouchableOpacity, ImageBackground } from 'react-native';
 import {globalStyles} from '../styles/global';
 import Card from '../shared/card';
 
 export default function Home ({ navigation }) {
 
     const [reviews, setReviews ] = useState([
-        {title: 'Zelda, Breath of the Wild', rating: 5, body: 'text...', key: 1 },
-        {title: 'Pokemon Silver', rating: 4, body: 'text 2...', key: 2 },
-        {title: 'Final Fantasy II', rating: 3, body: 'text3...', key: 3 },
+        {title: 'Kingdom Death: Monster', rating: 5, body: 'text...', key: 1 },
+        {title: 'Blood on the Clocktower', rating: 4, body: 'text 2...', key: 2 },
+        {title: 'Oath', rating: 3, body: 'text3...', key: 3 },
     ])
 
     return (
-        <View style={globalStyles.container}>
+        <ImageBackground source={require('../assets/game_bg.png')} style={globalStyles.container}>
             <FlatList 
                 data={reviews}
                 renderItem={({item}) => (
@@ -23,6 +23,6 @@ export default function Home ({ navigation }) {
                     </TouchableOpacity>
                 )}
             />
-        </View>
+        </ImageBackground>
     )
 }
