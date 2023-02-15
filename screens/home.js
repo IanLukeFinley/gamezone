@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, FlatList, TouchableOpacity, ImageBackground } from 'react-native';
+import { StyleSheet, View, Text, FlatList, TouchableOpacity, ImageBackground, Modal } from 'react-native';
 import {globalStyles} from '../styles/global';
 import Card from '../shared/card';
+import { MaterialIcons} from '@expo/vector-icons';
 
 export default function Home ({ navigation }) {
+
+    const [modalOpen, setModalOpen] = useState(false)
 
     const [reviews, setReviews ] = useState([
         {title: 'Kingdom Death: Monster', rating: 5, body: 'text...', key: 1 },
@@ -13,6 +16,27 @@ export default function Home ({ navigation }) {
 
     return (
         <ImageBackground source={require('../assets/game_bg.png')} style={globalStyles.container}>
+            <Modal visible={modalOpen} style={styles.modalContent} animationType='slide'>
+                <View>
+                    <MaterialIcons 
+                        name='close'
+                        size= {24}
+                        style={{
+                            ...styles.toggleModal,
+                            ...styles.modalClose
+
+                        }}
+                        onPress= { () => {setModalOpen(false)} }
+                    />
+                    <Text>Hello from the Modal!</Text>
+                </View>
+            </Modal>
+            <MaterialIcons 
+                name='add'
+                size= {24}
+                style={styles.toggleModal}
+                onPress= { () => {setModalOpen(true)} }
+            />
             <FlatList 
                 data={reviews}
                 renderItem={({item}) => (
@@ -26,3 +50,21 @@ export default function Home ({ navigation }) {
         </ImageBackground>
     )
 }
+
+const styles = StyleSheet.create({
+    toggleModal: {
+        marginBottom: 10,
+        borderWidth: 1,
+        borderColor: '#f2f2f2',
+        padding: 10,
+        borderRadius: 10,
+        alignSelf: 'center'
+    },
+    modalClose: {
+        marginTop: 20,
+        marginBottom: 0,
+    },
+    modalContent: {
+        flex: 1,
+    }
+})
