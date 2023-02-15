@@ -3,6 +3,7 @@ import { StyleSheet, View, Text, FlatList, TouchableOpacity, ImageBackground, Mo
 import {globalStyles} from '../styles/global';
 import Card from '../shared/card';
 import { MaterialIcons} from '@expo/vector-icons';
+import ReviewForm from './reviewForm';
 
 export default function Home ({ navigation }) {
 
@@ -16,8 +17,8 @@ export default function Home ({ navigation }) {
 
     return (
         <ImageBackground source={require('../assets/game_bg.png')} style={globalStyles.container}>
-            <Modal visible={modalOpen} style={styles.modalContent} animationType='slide'>
-                <View>
+            <Modal visible={modalOpen} animationType='slide'>
+                <View style={styles.modalContent} >
                     <MaterialIcons 
                         name='close'
                         size= {24}
@@ -28,7 +29,7 @@ export default function Home ({ navigation }) {
                         }}
                         onPress= { () => {setModalOpen(false)} }
                     />
-                    <Text>Hello from the Modal!</Text>
+                    <ReviewForm />
                 </View>
             </Modal>
             <MaterialIcons 
