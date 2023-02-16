@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, FlatList, TouchableOpacity, ImageBackground, Modal } from 'react-native';
+import { StyleSheet, View, Text, FlatList, TouchableOpacity, ImageBackground, 
+    Modal, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import {globalStyles} from '../styles/global';
 import Card from '../shared/card';
 import { MaterialIcons} from '@expo/vector-icons';
@@ -15,22 +16,32 @@ export default function Home ({ navigation }) {
         {title: 'Oath', rating: 3, body: 'text3...', key: 3 },
     ])
 
+    const addReview = (review) => {
+        review.key = Math.random().toString();
+        setReviews((prevReviews) => {
+            return [review, ...prevReviews]
+        });
+        setModalOpen(false);
+    }
+
     return (
         <ImageBackground source={require('../assets/game_bg.png')} style={globalStyles.container}>
             <Modal visible={modalOpen} animationType='slide'>
-                <View style={styles.modalContent} >
-                    <MaterialIcons 
-                        name='close'
-                        size= {24}
-                        style={{
-                            ...styles.toggleModal,
-                            ...styles.modalClose
+                <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                    <View style={styles.modalContent} >
+                        <MaterialIcons 
+                            name='close'
+                            size= {24}
+                            style={{
+                                ...styles.toggleModal,
+                                ...styles.modalClose
 
-                        }}
-                        onPress= { () => {setModalOpen(false)} }
-                    />
-                    <ReviewForm />
-                </View>
+                            }}
+                            onPress= { () => {setModalOpen(false)} }
+                        />
+                        <ReviewForm addReview={addReview}/>
+                    </View>
+                </TouchableWithoutFeedback>
             </Modal>
             <MaterialIcons 
                 name='add'
