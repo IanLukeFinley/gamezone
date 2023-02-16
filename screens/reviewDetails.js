@@ -2,11 +2,18 @@ import React from 'react';
 import { StyleSheet, View, Text, Image, ImageBackground } from 'react-native';
 import {globalStyles, images} from '../styles/global';
 import Card from '../shared/card';
-
+import FlatButton from '../shared/button';
 
 export default function ReviewDetails ({ route, navigation }) {
 
     const {title, rating, body, key} = route.params;
+
+
+
+    const editReview = (review) => {
+        console.log(review);
+    }
+
 
     return (
         <ImageBackground source={require('../assets/game_bg.png')} style={globalStyles.container}>
@@ -18,6 +25,10 @@ export default function ReviewDetails ({ route, navigation }) {
                     <Image source={images.ratings[rating]} />
                 </View>
             </Card>
+            <View style={styles.twoButton}>
+                <FlatButton text='Delete' onPress={() => deleteReview(key)}/>
+                <FlatButton text='Edit' onPress={editReview}/>
+            </View>
         </ImageBackground>
     )
 }
@@ -30,5 +41,13 @@ const styles = StyleSheet.create({
         marginTop: 16,
         borderTopWidth: 1,
         borderTopColor: '#eee',
+    },
+    twoButton: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        alignItems: 'flex-end',
+        flexDirection: 'row',
+        alignItems: 'center',
     }
 })

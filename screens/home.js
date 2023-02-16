@@ -24,6 +24,11 @@ export default function Home ({ navigation }) {
         setModalOpen(false);
     }
 
+    const deleteReview = (key) => { //Next: how to pass this into the reviewDetails component using the Navigator...
+        console.log(key);
+    }
+
+
     return (
         <ImageBackground source={require('../assets/game_bg.png')} style={globalStyles.container}>
             <Modal visible={modalOpen} animationType='slide'>
