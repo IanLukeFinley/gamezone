@@ -1,10 +1,11 @@
 {
   "expo": {
-    "name": "gamezone",
-    "slug": "gamezone",
+    "name": "Game Zone",
+    "slug": "game-zone-tutorial-app",
+    "description": "A workthrough of the Net Ninja React Native tutorial",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/heart_logo.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
@@ -28,6 +29,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "9e497932-7d70-4bf2-80d6-b5d51e374a6e"
+      }
+    },
+    "owner": "ianlukefinley"
   }
 }
