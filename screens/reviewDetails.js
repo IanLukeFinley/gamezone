@@ -6,12 +6,13 @@ import FlatButton from '../shared/button';
 
 export default function ReviewDetails ({ route, navigation }) {
 
-    const {title, rating, body, key} = route.params;
+    const { title, rating, body, key, change } = route.params;
+    const id = JSON.stringify(key)
 
 
 
-    const editReview = (review) => {
-        console.log(review);
+    const editReview = () => {
+        console.log(JSON.stringify(id));
     }
 
 
@@ -26,7 +27,7 @@ export default function ReviewDetails ({ route, navigation }) {
                 </View>
             </Card>
             <View style={styles.twoButton}>
-                <FlatButton text='Delete' onPress={() => deleteReview(key)}/>
+                <FlatButton text='Delete' onPress={() => change(id)}/>
                 <FlatButton text='Edit' onPress={editReview}/>
             </View>
         </ImageBackground>

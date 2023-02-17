@@ -11,9 +11,42 @@ export default function Home ({ navigation }) {
     const [modalOpen, setModalOpen] = useState(false)
 
     const [reviews, setReviews ] = useState([
-        {title: 'Kingdom Death: Monster', rating: 5, body: 'text...', key: 1 },
-        {title: 'Blood on the Clocktower', rating: 4, body: 'text 2...', key: 2 },
-        {title: 'Oath', rating: 3, body: 'text3...', key: 3 },
+        {
+            title: 'Kingdom Death: Monster', 
+            rating: 5, 
+            body: 'text...', 
+            key: 1,
+            change:  function(id){  //this is very wet. Fix it once edit works
+                setReviews((prevReviews) => {
+                    return prevReviews.filter(review => review.key != id)
+                });
+                navigation.navigate('Home') 
+            },
+        },
+        {
+            title: 'Blood on the Clocktower', 
+            rating: 4, 
+            body: 'text 2...', 
+            key: 2,
+            change:  function(id){  //this is very wet. Fix it once edit works
+                setReviews((prevReviews) => {
+                    return prevReviews.filter(review => review.key != id)
+                });
+                navigation.navigate('Home') 
+            },
+        },
+        {
+            title: 'Oath', 
+            rating: 3, 
+            body: 'text3...', 
+            key: 3,
+            change:  function(id){  //this is very wet. Fix it once edit works
+                setReviews((prevReviews) => {
+                    return prevReviews.filter(review => review.key != id)
+                });
+                navigation.navigate('Home') 
+            },
+        },
     ])
 
     const addReview = (review) => {
@@ -22,10 +55,6 @@ export default function Home ({ navigation }) {
             return [review, ...prevReviews]
         });
         setModalOpen(false);
-    }
-
-    const deleteReview = (key) => { //Next: how to pass this into the reviewDetails component using the Navigator...
-        console.log(key);
     }
 
 
