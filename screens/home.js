@@ -36,7 +36,7 @@ export default function Home ({ navigation }) {
             },
         },
         {
-            title: 'Oath', 
+            title: 'Oath 2', 
             rating: 3, 
             body: 'text3...', 
             key: 3,
